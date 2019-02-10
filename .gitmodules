@@ -1,0 +1,3 @@
+[submodule "librarys/cxxopts"]
+	path = librarys/cxxopts
+	url = https://github.com/jarro2783/cxxopts.git
