@@ -32,6 +32,11 @@ public:
 	 * @return
 	 */
 	double eval(xt::xarray<double>);
+	/**
+	 * @brief repair
+	 * @return
+	 */
+	xt::xarray<double> repair(xt::xarray<double>);
 };
 
 class StoppingTask : Task {

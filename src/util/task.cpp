@@ -10,12 +10,18 @@ double Task::eval(xarray<double> I) {
 	return (*func)(I) * ot;
 }
 
+xarray<double> Task::repair(xarray<double> x) {
+	// FIXME
+	return nullptr;
+}
+
 StoppingTask::StoppingTask() {}
 
 StoppingTask::StoppingTask(EvalFunc func, int D, xarray<double> Lower, xarray<double> Upper, long nFES, long nGEN, double rVAL, OptType ot) : Task(func, D, Lower, Upper, ot), nFES(nFES), nGEN(nGEN), rVAL(rVAL) {}
 
 double StoppingTask::eval(xarray<double> I) {
-	fes++;
+	if (stopCond()) return std::numeric_limits<double>::infinity() * ot;
+	else fes++;
 	auto v = Task::eval(I);
 	if (v < brVAL) brVAL = v;
 	return v;

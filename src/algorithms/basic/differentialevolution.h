@@ -2,10 +2,14 @@
 #define DIFFERENTIALEVOLUTION_H
 
 
-class DifferentialEvolution
-{
+class DifferentialEvolution {
+protected:
+	unsigned int NP;
+	double F, CR;
+
 public:
 	DifferentialEvolution();
+	DifferentialEvolution(unsigned int, double, double);
 };
 
 #endif // DIFFERENTIALEVOLUTION_H
