@@ -2,8 +2,7 @@
 #define ALGORITHM_H
 
 
-class Algorithm
-{
+class Algorithm {
 public:
 	Algorithm();
 };

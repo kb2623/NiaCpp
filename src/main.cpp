@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <cxxopts.hpp>
+#include <cxxopts.hpp>
 #include <xtensor/xarray.hpp>
 #include <xtensor/xio.hpp>
 #include <xtensor/xrandom.hpp>
