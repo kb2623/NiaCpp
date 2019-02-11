@@ -21,6 +21,8 @@ int main(int argc, char* argv[]) {
 	cout << endl << endl;
 	xarray<int> arr {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	cout << arr.shape()[0] << endl;
+	xarray<int> r = argwhere(arr < 5);
+	cout << r.data() << endl;
 	arr.reshape({3, 3});
 	cout << arr.shape().size() << endl;
 	cout << arr << endl;

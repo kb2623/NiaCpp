@@ -11,10 +11,9 @@
 
 class Algorithm {
 public:
-	Algorithm() {}
-	virtual ~Algorithm() {}
-	virtual void setTask(Task) = 0;
-	virtual std::tuple<xt::xarray<double>, double> run() = 0;
+   Algorithm() {}
+   virtual ~Algorithm() {}
+   virtual std::tuple<xt::xarray<double>, double> run(Task) = 0;
 };
 
 #endif // ALGORITHM_H

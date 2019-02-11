@@ -8,13 +8,13 @@
 using EvalFunc = double (*)(xt::xarray<double>);
 
 enum OptType {
-	MINIMIZATION = 1,
+        MINIMIZATION = 1,
 	MAXIMIZATION = -1
 };
 
 class Task {
 protected:
-	unsigned int D = 0;
+        unsigned int D = 0;
 	unsigned long fes = 0, gen = 0;
 	xt::xarray<double> Lower;
 	xt::xarray<double> Upper;
@@ -36,7 +36,9 @@ public:
 	 * @brief repair
 	 * @return
 	 */
+        /*
 	xt::xarray<double> repair(xt::xarray<double>);
+        */
 };
 
 class StoppingTask : Task {

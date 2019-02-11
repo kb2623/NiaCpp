@@ -6,7 +6,8 @@ Individual::Individual() {
 
 }
 
-Individual::Individual(xarray<double> ix, Task t) : x(t.repair(ix)) {
+//Individual::Individual(xarray<double> ix, Task t) : x(t.repair(ix)) {
+Individual::Individual(xarray<double> ix, Task t) : x(ix) {
 	f = t.eval(x);
 }
 

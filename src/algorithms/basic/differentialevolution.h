@@ -1,11 +1,13 @@
 #ifndef DIFFERENTIALEVOLUTION_H
 #define DIFFERENTIALEVOLUTION_H
 
+#include "../algorithm.h"
 
-class DifferentialEvolution {
+class DifferentialEvolution : Algorithm {
 protected:
 	unsigned int NP;
-	double F, CR;
+	double F;
+	double CR;
 
 public:
 	DifferentialEvolution();

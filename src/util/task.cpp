@@ -10,10 +10,12 @@ double Task::eval(xarray<double> I) {
 	return (*func)(I) * ot;
 }
 
+/*
 xarray<double> Task::repair(xarray<double> x) {
 	// FIXME
 	return nullptr;
 }
+*/
 
 StoppingTask::StoppingTask() {}
 
