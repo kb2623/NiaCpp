@@ -3,60 +3,63 @@
 
 #include <limits>
 
-#include <xtensor/xarray.hpp>
-
-using EvalFunc = double (*)(xt::xarray<double>);
+#include "../arrays/array.h"
+#include "../algorithms/individual.h"
 
 enum OptType {
-        MINIMIZATION = 1,
+	MINIMIZATION = 1,
 	MAXIMIZATION = -1
 };
 
+template<typename T>
 class Task {
 protected:
-        unsigned int D = 0;
+	unsigned int D = 0;
 	unsigned long fes = 0, gen = 0;
-	xt::xarray<double> Lower;
-	xt::xarray<double> Upper;
+	Array<T> Lower;
+	Array<T> Upper;
 	OptType ot = MINIMIZATION;
-	EvalFunc func = nullptr;
+	double (*evalFunc)(Individual<T>) = nullptr;
 
 public:
 	Task();
 	/**
 	 * @brief Task
 	 */
-	Task(EvalFunc, int, xt::xarray<double>, xt::xarray<double>, OptType);
+	Task(double (*evalFunc)(Individual<T>), int, Array<T>, Array<T>, OptType);
 	/**
 	 * @brief eval
 	 * @return
 	 */
-	double eval(xt::xarray<double>);
+	double eval(Array<T> i) {
+		return evalFunc(i) * ot;
+	}
 	/**
 	 * @brief repair
 	 * @return
 	 */
         /*
-	xt::xarray<double> repair(xt::xarray<double>);
+	xt::xarray<double> repair();
         */
 };
 
-class StoppingTask : Task {
+template<typename T>
+class StoppingTask : Task<T> {
 protected:
 	long nFES = -1, nGEN = -1;
-	double rVAL = std::numeric_limits<double>::infinity() * ot, brVAL = std::numeric_limits<double>::infinity() * ot;
+	double rVAL = std::numeric_limits<double>::infinity() * this->ot, brVAL = std::numeric_limits<double>::infinity() * this->ot;
 
 public:
 	StoppingTask();
 	/**
 	 * @brief StoppingTask
 	 */
-	StoppingTask(EvalFunc, int, xt::xarray<double>, xt::xarray<double>, long, long, double, OptType);
+	StoppingTask(double (*evalFunc)(Individual<T>), int, Array<T>, Array<T>, long, long, double, OptType);
 	/**
 	 * @brief eval
 	 * @return
 	 */
-	double eval(xt::xarray<double>);
+	double eval(Array<T>);
 	/**
 	 * @brief stopCond
 	 * @return

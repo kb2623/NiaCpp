@@ -5,15 +5,14 @@
 #include <string>
 #include <tuple>
 
-#include <xtensor/xarray.hpp>
-
+#include "individual.h"
 #include "../util/task.h"
 
+template<typename T>
 class Algorithm {
 public:
    Algorithm() {}
-   virtual ~Algorithm() {}
-   virtual std::tuple<xt::xarray<double>, double> run(Task) = 0;
+	virtual Individual<T> run(Task<T>) = 0;
 };
 
 #endif // ALGORITHM_H

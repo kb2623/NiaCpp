@@ -1,7 +1,5 @@
 #include "task.h"
-
-using namespace xt;
-
+/*
 Task::Task() {}
 
 Task::Task(EvalFunc func, int D, xarray<double> Lower, xarray<double> Upper, OptType ot) : func(func), D(D), Lower(Lower), Upper(Upper), ot(ot) {}
@@ -10,12 +8,10 @@ double Task::eval(xarray<double> I) {
 	return (*func)(I) * ot;
 }
 
-/*
 xarray<double> Task::repair(xarray<double> x) {
 	// FIXME
 	return nullptr;
 }
-*/
 
 StoppingTask::StoppingTask() {}
 
@@ -53,3 +49,4 @@ bool StoppingTask::stopCondV() {
 bool StoppingTask::stopCond() {
 	return stopCondE() || stopCondI() || stopCondV();
 }
+*/

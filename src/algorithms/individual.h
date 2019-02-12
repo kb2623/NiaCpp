@@ -3,19 +3,20 @@
 
 #include <limits>
 
-#include <xtensor/xarray.hpp>
+#include "../arrays/array.h"
 
-#include "../util/task.h"
-
+template<class T>
 class Individual {
 protected:
-	xt::xarray<double> x;
+//	xt::xarray<double> x;
 	double f = std::numeric_limits<double>::infinity();
 
 public:
 	Individual();
-	Individual(xt::xarray<double>, Task);
-	bool operator<(Individual i);
+	Individual(Array<T>);
+	bool operator<(Individual<T> i) {
+		return f < i.f;
+	}
 };
 
 #endif // INDIVIDUAL_H
